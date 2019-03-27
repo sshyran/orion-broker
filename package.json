@@ -1,0 +1,21 @@
+{
+  "name": "orion",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "author": "",
+  "license": "ISC",
+  "scripts": {
+    "start": "node index.js -emulator"
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "node-fetch": "^2.3.0",
+    "rxjs": "^6.3.3",
+    "sequelize": "^4.41.0",
+    "sqlite3": "^4.0.3",
+    "utg": "file:../../orion-broker/utg",
+    "ws": "^6.1.0"
+  }
+}
