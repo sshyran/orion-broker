@@ -1,5 +1,5 @@
 {
-  "name": "orion",
+  "name": "orion-broker",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "rxjs": "^6.3.3",
     "sequelize": "^4.41.0",
     "sqlite3": "^4.0.3",
-    "utg": "file:../../orion-broker/utg",
+    "orion-connectors": "file:../orion-connectors",
     "ws": "^6.1.0"
   }
 }

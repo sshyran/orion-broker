@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {UTG, Exchanges, ExchangeOperation, Order, Trade, Status} = require('utg');
+const {UTG, Exchanges, ExchangeOperation, Order, Trade, Status} = require('orion-connectors');
 const bodyParser = require('body-parser');
 const WebSocket = require('ws');
 const {Broker} = require('./src/broker');

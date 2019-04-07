@@ -1,7 +1,7 @@
 const { Observable, Subject, ReplaySubject, interval, from, of } = require('rxjs');
 const { ajax } = require('rxjs/ajax');
 const { map, filter, switchMap, catchError, repeat, flatMap, delay, tap } = require('rxjs/operators');
-const {UTG, ExchangeOperation, Order, Trade} = require("utg");
+const {UTG, ExchangeOperation, Order, Trade} = require("orion-connectors");
 
 class Broker {
     constructor(settings) {

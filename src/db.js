@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const {Status} = require("utg");
+const {Status} = require("orion-connectors");
 const Op = Sequelize.Op;
 
 const sequelize = new Sequelize('orders', null, null, {
