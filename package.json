@@ -12,10 +12,10 @@
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
     "node-fetch": "^2.3.0",
+    "orion-connectors": "git+https://github.com/orionprotocol/orion-connectors.git",
     "rxjs": "^6.3.3",
     "sequelize": "^4.41.0",
     "sqlite3": "^4.0.3",
-    "orion-connectors": "file:../orion-connectors",
     "ws": "^6.1.0"
   }
 }

@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {UTG, Exchanges, ExchangeOperation, Order, Trade, Status} = require('orion-connectors');
+const {Index, Exchanges, ExchangeOperation, Order, Trade, Status} = require('orion-connectors');
 const bodyParser = require('body-parser');
 const WebSocket = require('ws');
 const {Broker} = require('./src/broker');
@@ -10,7 +10,7 @@ const wss = new WebSocket.Server({ port: 8080 });
 
 let client;
 const isEmulator = process.argv[2] === "-emulator";
-const connector = !isEmulator ? new UTG({
+const connector = !isEmulator ? new Index({
         poloniex: {
             secret: "",
             key: ""
@@ -24,7 +24,7 @@ const connector = !isEmulator ? new UTG({
             key: ""
         }
     }) :
-    new UTG({
+    new Index({
         poloniex: {
             secret: "",
             key: "emulator",
