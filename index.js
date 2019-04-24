@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const {Index, Exchanges, ExchangeOperation, Order, Trade, Status} = require('orion-connectors');
+const {Connectors, Exchanges, ExchangeOperation, Order, Trade, Status} = require('orion-connectors');
 const bodyParser = require('body-parser');
 const WebSocket = require('ws');
 const {Broker} = require('./src/broker');
@@ -10,7 +10,7 @@ const wss = new WebSocket.Server({ port: 8080 });
 
 let client;
 const isEmulator = process.argv[2] === "-emulator";
-const connector = !isEmulator ? new Index({
+const connector = !isEmulator ? new Connectors({
         poloniex: {
             secret: "",
             key: ""
@@ -24,7 +24,7 @@ const connector = !isEmulator ? new Index({
             key: ""
         }
     }) :
-    new Index({
+    new Connectors({
         poloniex: {
             secret: "",
             key: "emulator",
@@ -42,12 +42,8 @@ const connector = !isEmulator ? new Index({
         }
     });
 
-
-const ORION_SETTINGS = {
-    orionUrl: 'http://127.0.0.1:9090',
-    address: '', //Waves address
-    callbackUrl: 'http://127.0.0.1:3000/api'
-};
+let rawdata = fs.readFileSync('./config.json');
+let ORION_SETTINGS = JSON.parse(rawdata);
 
 const broker = new Broker(ORION_SETTINGS);
 broker.registerBoker();
