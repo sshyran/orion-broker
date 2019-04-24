@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const WebSocket = require('ws');
 const {Broker} = require('./src/broker');
 const {DbOrder, DbTrade, OrderService} = require('./src/db');
+const fs = require('fs');
 
 const wss = new WebSocket.Server({ port: 8080 });
 
