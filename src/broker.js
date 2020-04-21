@@ -6,7 +6,7 @@ const {UTG, ExchangeOperation, Order, Trade} = require("orion-connectors");
 class Broker {
     constructor(settings) {
         this.address = settings.address;
-        this.orionUrl = settings.orionUrl;
+        this.orionUrl = settings.orionUrl + '/api/v1';
         this.callbackUrl = settings.callbackUrl;
         this.registered = false;
     };
@@ -31,6 +31,8 @@ class Broker {
                 if (result.status === 'REGISTERED') {
                     this.registered = true;
                     console.info('Broker has been registered with id: ', result.broker);
+                } else {
+                    console.info("Broker connected:", result);
                 }
             })
             .catch((error) => {
@@ -53,7 +55,7 @@ class Broker {
         }).then((r1) => {
             return r1.json()
         }).then((result) => {
-            console.info('Balance updated: ', bodyToSend);
+            //console.info('Balance updated: ', bodyToSend);
         }).catch((error) => {
             console.error('Error on broker/register: ', error.message);
         }));
@@ -94,6 +96,8 @@ class Broker {
             "timestamp": trade.timestamp
         };
 
+        console.info('Sending Trade: ', JSON.stringify(orionTrade));
+
         return fetch(`${this.orionUrl}/trade`, {
                 method: 'POST',
                 headers: {
@@ -102,7 +106,12 @@ class Broker {
                 },
                 body: JSON.stringify(orionTrade)
             })
-            .then((response) => response.json())
+            .then((response) => {
+                if (!response.ok) {
+                    throw Error(response.statusText);
+                }
+                return response.json();
+            })
             .then((resOrder) => {
                 trade.commited = true;
 

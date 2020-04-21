@@ -23,23 +23,37 @@ const connector = !isEmulator ? new Connectors({
         binance: {
             secret: "",
             key: ""
-        }
+        },
+        coinex: {
+            secret: "",
+            key: ""
+        },
     }) :
     new Connectors({
         poloniex: {
             secret: "",
             key: "emulator",
-            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000"},
+            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000", "USDT": "100000"},
         },
         bittrex: {
             secret: "",
             key: "emulator",
-            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000"},
+            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000", "USDT": "100000"},
         },
         binance: {
             secret: "",
             key: "emulator",
-            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000"},
+            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000", "USDT": "100000"},
+        },
+        bitmax: {
+            secret: "",
+            key: "emulator",
+            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000", "USDT": "100000"},
+        },
+        coinex: {
+            secret: "",
+            key: "emulator",
+            balances: {"BTC": "20", "ETH": "500", "XRP": "100000", "WAVES": "100000", "HOT": "10000000"},
         }
     });
 
@@ -295,7 +309,7 @@ app.get('/api/order1', async (req, res) => {
 });
 
 
-app.listen(3000, function () {
+app.listen(4000, function () {
     console.log('Example app listening on http://localhost:3000/');
 });
 
